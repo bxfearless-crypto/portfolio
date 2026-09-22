@@ -29,7 +29,7 @@ document.querySelector('#app').innerHTML=`
  <dialog id="project-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Close project">×</button><div id="dialog-content"></div></dialog>`;
 
 function visual(p){
- if(p.visual==='city')return `<div class="project-visual city-visual"><img src="/assets/optimized/city.jpg" alt="Architectural imagery from City Mood Map"><span>How does<br>Hong Kong<br><i>feel to you?</i></span></div>`;
+ if(p.visual==='city')return `<div class="project-visual city-visual"><img src="/assets/city-mood-map.jpg" alt="City Mood Map project visual"><span>How does<br>Hong Kong<br><i>feel to you?</i></span></div>`;
  if(p.visual==='dashboard')return `<div class="project-visual dashboard-visual"><div class="mini-sidebar">apac<span>Overview<br><br>Conversations<br><br>Insights</span></div><div class="mini-dashboard"><small>Brand intelligence prototype</small><h3>Listen. Understand.<br>Find the next idea.</h3><div class="chart">${[42,65,49,89,70,96,80].map((h,i)=>`<i style="height:${h}%;opacity:${.4+i*.09}"></i>`).join('')}</div><span>Consumer conversations → Marketing insights</span></div></div>`;
  if(p.visual==='lulu')return `<div class="project-visual lulu-visual"><small>Independent campaign concept</small><h3>Sunday<br>Reset Club</h3><span>Move. Connect. Belong.</span><div class="orbit"></div></div>`;
  if(p.visual==='editorial')return `<div class="project-visual editorial-visual editorial-photo-visual editorial-title-card"><div><span>From the newsroom</span><h3>Stories<br>from the field.</h3><small>Luzhou Daily · Sichuan · 2023</small></div><b>REPORTING<br>FIELD NOTES<br>04—07 / 2023</b></div>`;
