@@ -1,0 +1,40 @@
+/* The landscape fills the stage; controls sit in the margins of the journey. */
+body{background:#e9f1e6}
+.hero{min-height:0;padding-top:0;background:none}
+.hero-copy{max-width:none;display:grid;grid-template-columns:1fr auto;align-items:end;padding:12px 5.5% 26px;animation:none}
+.hero-copy .intro-note{grid-column:1}
+.hero-copy h1{font-size:clamp(38px,4vw,58px);letter-spacing:-2px;grid-column:1;margin:12px 0}
+.hero-copy>p{grid-column:1;line-height:1.6}
+.hero-copy .view-switch{grid-column:2;grid-row:2/4;align-self:center;margin:0}
+.side-note{display:none}
+#studio-wrap{height:min(76vh,840px);min-height:550px;margin:0 24px;border:1px solid #a8c0b9;border-radius:24px;overflow:hidden;background:#c9e5e7;box-shadow:0 16px 45px #415e5420}
+#scene,#hotspots{inset:0;bottom:0}
+#scene canvas{touch-action:none}
+.island-hud{position:absolute;inset:0;pointer-events:none;z-index:5;font-size:12px;color:#2e4d45}
+.island-hud button{pointer-events:auto;border:1px solid #b6cabc;background:#fffdf1;color:#2e4d45;padding:11px 15px;border-radius:12px;box-shadow:0 3px 8px #33594b13;transition:background .2s}
+.island-hud button:hover{background:#f4dc9f}
+.island-hud button[aria-pressed=true]{background:#406d5a;color:#fff9e7;border-color:#406d5a}
+.island-toolbar{position:absolute;top:20px;left:20px;right:20px;display:flex;gap:8px;flex-wrap:wrap}
+.island-toolbar [data-island-full]{margin-left:auto}
+.island-toolbar select{pointer-events:auto;max-width:200px;padding:9px 12px;border:1px solid #b6cabc;border-radius:12px;background:#fffdf1;color:#2e4d45;font:inherit;cursor:pointer}
+.island-arrival{position:absolute;left:24px;bottom:58px;max-width:285px;padding:18px 20px;background:#fffdf0ee;border:1px solid #d7d9ba;border-radius:5px 20px 20px 20px;box-shadow:0 8px 24px #37584720}
+.island-arrival>span{display:block;font-size:10px;color:#667866;margin-bottom:9px}
+.island-arrival>b{font:24px/1.1 Georgia,serif;display:block}
+.island-arrival p{font-size:12px;line-height:1.6;margin:10px 0 0;color:#536b5b}
+.island-arrival button{margin-top:12px;width:100%;font-size:11px;background:#406d5a;color:#fff;border-color:#406d5a}
+.island-footnote{position:absolute;left:24px;right:24px;bottom:20px;display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#2e4d45}
+.island-footnote>span{background:#fffdf0db;padding:7px 10px;border-radius:8px}
+.island-label{font-size:10px;padding:8px 10px;border-radius:14px 14px 14px 3px;background:#fffdf1ee;border-color:#d7d9ba;max-width:180px;white-space:normal;z-index:1}
+.island-label.is-discovered{border-color:#658b70;background:#e4efdcee}
+.island-label b{font-weight:500}
+.island-pad{position:absolute;right:24px;bottom:72px;text-align:center;pointer-events:auto}
+.island-pad>button{margin-bottom:6px}.island-pad>div{display:flex;gap:6px}.island-pad button{width:44px;height:44px;padding:0;font-size:20px;touch-action:none;user-select:none}
+.camera-zoom{right:24px;bottom:180px;z-index:6}#reset-view{right:24px;bottom:228px;z-index:6;border-radius:10px;background:#fffdf0}
+.island-expanded-body{overflow:hidden}
+#studio-wrap.island-expanded{position:fixed;inset:0;z-index:90;height:100dvh;min-height:0;margin:0;border:0;border-radius:0}
+dialog{z-index:100}
+.hero-bottom{margin:25px 5.5% 0}.index-section{padding-top:65px}
+@media(max-width:850px){.hero-copy{padding:12px 6% 23px;grid-template-columns:1fr}.hero-copy .view-switch{grid-column:1;grid-row:auto;justify-self:start;margin-top:18px}.hero-copy h1{font-size:44px}#studio-wrap{height:70vh;min-height:560px;margin:0 12px}.island-arrival{max-width:235px}.island-arrival>b{font-size:21px}.island-footnote{font-size:10px}}
+@media(max-width:540px){#studio-wrap{height:74vh;min-height:580px;border-radius:18px}.hero-copy h1{font-size:40px}.island-toolbar{top:12px;left:12px;right:12px;gap:6px}.island-toolbar button{font-size:10px;padding:9px 10px}.island-toolbar [data-island-full]{margin-left:0}.island-arrival{left:12px;bottom:82px;width:190px;padding:13px;max-width:calc(100% - 136px)}.island-arrival>b{font-size:18px}.island-arrival p{font-size:10px}.island-footnote{left:12px;right:12px;bottom:12px;flex-direction:column;align-items:start;gap:4px}.island-footnote>span{padding:5px 8px}.island-pad{right:12px;bottom:82px}.island-pad button{width:34px;height:36px}.camera-zoom{right:12px;bottom:220px}#reset-view{right:12px;bottom:268px}.island-label{font-size:8px;padding:6px 8px;max-width:130px}.island-hud button:focus-visible{outline:3px solid #b26a42;outline-offset:3px}}
+@media(prefers-reduced-motion:reduce){.island-hud button{transition:none}}
+@media(max-width:540px){.island-toolbar select{font-size:10px;max-width:150px;padding:8px}}

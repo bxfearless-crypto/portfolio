@@ -1,6 +1,7 @@
 import './style.css';
 import './forest.css';
-import { mountStudio } from './landscape.js';
+import './island.css';
+import { mountStudio } from './island.js';
 
 const projects = [
  {id:'apac',object:'The monitor',name:'APAC Brand Intelligence',kind:'Independent project · AI & brand research',color:'#405bdd',intro:'From brand conversations to a clearer brief.',description:'A brand intelligence dashboard exploring how consumer conversations can be organised into useful marketing insights. I designed the prototype around manually curated sample data, with a structure that can later connect to AI analysis and real-time information sources.',details:[['The idea','Bring sentiment, conversation themes, supporting quotes and competitor comparisons into one readable workspace.'],['The experience','Explore insights, reveal the original evidence and compare Nike and Adidas discussion samples in a Hong Kong scenario.'],['Project status','A prototype for future AI-assisted analysis and real-time source integration.']],tags:['Information design','Brand insights','Next.js / React'],visual:'dashboard',link:'https://apac-brand-intelligence.vercel.app/',linkLabel:'Open the live project'},
@@ -59,19 +60,17 @@ let studio;
 function changeView(list){document.querySelector('#project-list').hidden=!list;document.querySelector('#studio-wrap').hidden=list;for(const [id,active]of [['list-view',list],['studio-view',!list]]){const b=document.getElementById(id);b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));}if(!list)studio?.resize();}
 document.getElementById('list-view').onclick=()=>changeView(true);document.getElementById('studio-view').onclick=()=>changeView(false);
 try{studio=mountStudio(document.getElementById('scene'),document.getElementById('hotspots'),projects,openProject);document.getElementById('scene-loading').hidden=true;document.getElementById('reset-view').onclick=()=>studio.reset();}catch(e){console.error(e);document.getElementById('scene-loading').textContent='The 3D studio is unavailable on this device. Browse the projects below.';changeView(true);document.getElementById('studio-view').disabled=true;}
-const destinations={forest:{name:'Forest workshop',icon:'♧',title:'Where ideas take root.',text:'A writing desk in a sunlit clearing. Start with any object.',items:'All seven stories'},pond:{name:'Moonlit pond',icon:'☾',title:'Follow the quieter path.',text:'A glass city, a little sailboat and a lantern beside the water.',items:'City · Video · Campaign'},library:{name:'Mushroom library',icon:'⌂',title:'A home for collected stories.',text:'Open a book, discover a treasure chest, or try the curious little lamp.',items:'Journalism · AI · App'}};
-const visited=new Set(['forest']);
-Object.assign(destinations.forest,{name:'Forest valley',title:'A valley full of possibilities.',text:'Follow the paths to an observatory, a tiny city, a cinema and a windmill.',items:'Seven landmarks · Seven projects'});
-Object.assign(destinations.pond,{name:'Moonlit harbour',title:'Stories across the water.',text:'Explore the memory harbour, story lighthouse and lakeside retreat.',items:'City · Video · Campaign'});
-Object.assign(destinations.library,{name:'Storybook village',title:'A village of collected ideas.',text:'Visit the great story library, the insight archive and the inventor’s cottage.',items:'Journalism · AI · App'});
-document.querySelector('#hero-title').innerHTML='A world of<br>little discoveries.';
-document.querySelector('.hero-copy>p').innerHTML='I’m Zhengwei. Explore my work through<br>the places, stories and ideas that shape it.';
-document.querySelector('.intro-note').innerHTML='<span></span>Welcome to my low-poly world';
+document.querySelector('.intro-note').innerHTML='<span></span>A little island of stories';
 document.querySelector('#studio-view').textContent='♧  Explore the world';
-document.querySelector('.scene-instruction').textContent='Drag to look around · Use + / − to explore closer · Click a landmark to open a project';
-if(studio){document.querySelector('#studio-wrap').insertAdjacentHTML('beforeend',`<aside class="destination-card" aria-live="polite"><span id="destination-items">All seven stories</span><h2 id="destination-title">Where ideas take root.</h2><p id="destination-description">A writing desk in a sunlit clearing. Start with any object.</p></aside><nav class="world-map" aria-label="Explore destinations">${Object.entries(destinations).map(([id,d])=>`<button data-world="${id}" aria-pressed="${id==='forest'}"><span>${d.icon}</span><b>${d.name}</b><i aria-hidden="true">${id==='forest'?'●':'○'}</i></button>`).join('')}<small id="exploration-status" aria-live="polite">1 of 3 places explored</small></nav>`);
+if(studio){
  document.querySelector('#studio-wrap').insertAdjacentHTML('beforeend','<div class="camera-zoom" role="group" aria-label="Camera zoom"><button id="zoom-in" aria-label="Zoom in">+</button><button id="zoom-out" aria-label="Zoom out">−</button></div>');
  document.getElementById('zoom-in').onclick=()=>studio.zoomBy(1.18);document.getElementById('zoom-out').onclick=()=>studio.zoomBy(1/1.18);
- document.getElementById('destination-title').textContent=destinations.forest.title;document.getElementById('destination-description').textContent=destinations.forest.text;document.getElementById('destination-items').textContent=destinations.forest.items;
- document.querySelectorAll('[data-world]').forEach(button=>button.onclick=()=>{const id=button.dataset.world,d=destinations[id];studio.setWorld(id);document.body.dataset.world=id;visited.add(id);document.getElementById('destination-title').textContent=d.title;document.getElementById('destination-description').textContent=d.text;document.getElementById('destination-items').textContent=d.items;document.getElementById('exploration-status').textContent=`${visited.size} of 3 places explored`;document.querySelectorAll('[data-world]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.world===id));b.querySelector('i').textContent=visited.has(b.dataset.world)?'●':'○';});document.getElementById('scene').setAttribute('aria-label',`${d.name}. ${d.text} Click an object or use the labelled buttons to open a project.`);});
 }
+
+// The island now connects all destinations in one continuous landscape.
+document.querySelector('.scene-instruction').hidden=true;
+document.querySelector('#hero-title').innerHTML='Somewhere<br>stories come alive.';
+document.querySelector('.hero-copy>p').innerHTML='I’m Zhengwei. Take a little walk through my work.<br>Every doorway opens a different story.';
+document.querySelector('#scene').setAttribute('aria-label','A walkable storybook island. Click paths to walk, use WASD or arrow keys in exploration mode, and press E near a building to open a project.');
+document.title='Zhengwei Zhuo — Story Island';
+if(import.meta.hot)import.meta.hot.dispose(()=>studio?.dispose());
