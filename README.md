@@ -21,7 +21,7 @@ Open http://127.0.0.1:5173/. Local service must be running; a Git commit does no
 - Island layout styling: src/island.css
 - Project images: public/assets/
 
-Click paths to walk, select destinations, or use the project list. Live links open from project case studies. The castle and expedition modules are inactive local experiments, not part of the deployed scene.
+Click paths to walk, select destinations, or use the project list. Live links open from project case studies. Unused castle, expedition and earlier scene experiments have been removed from the project.
 
 ## Build and deploy
 
