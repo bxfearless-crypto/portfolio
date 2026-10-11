@@ -46,7 +46,6 @@ export function mountStudio(container, labels, projects, onSelect) {
  pavilion(landmark('forest','lulu',7,-1,'Sunday meadow',4.4));
  cottage(landmark('forest','editorial',-7,4.5,'The story house',4),'#b56f64',1.05);
  const cinema=landmark('forest','media',7,4.5,'Woodland cinema',3.5);box(cinema,2.6,1.55,.17,0,1.6,0,'#efdfb3');for(const x of [-1.25,1.25])box(cinema,.12,2,.18,x,.9,0,bark);const play=mesh(cinema,new T.CircleGeometry(.35,3),'#9e6876',0,1.65,.1);play.rotation.z=-Math.PI/2;for(let i=0;i<3;i++)box(cinema,1.5,.25,.3,0,.3,1+i*.6,'#9b8256');
- const reel=landmark('forest','moving-images',5.2,6.1,'Moving image reel',4.5);cylinder(reel,.68,.78,.22,0,.18,0,'#b66d58');const reelDisc=mesh(reel,new T.TorusGeometry(.58,.13,8,24),'#d7b26e',0,1.03,0);reelDisc.rotation.x=Math.PI/2;cylinder(reel,.17,.17,.18,0,1.03,0,'#795940');for(let i=0;i<6;i++){const spoke=box(reel,.06,.58,.05,0,1.03,0,'#d7b26e');const pivot=new T.Group();reel.remove(spoke);pivot.add(spoke);pivot.rotation.y=i*Math.PI/3;reel.add(pivot);}
  cottage(landmark('forest','hanlin',-1,6.2,'WeChat studio',3.8),'#6f8f86',.78);
  const mill=landmark('forest','app',3.5,5.6,'Maker’s windmill',4.8);cottage(mill,'#8393ad',.8);const sails=new T.Group();sails.position.set(0,3.15,1.45);mill.add(sails);for(let i=0;i<4;i++){const blade=box(sails,.19,1.7,.08,0,.65,0,cream);const pivot=new T.Group();sails.remove(blade);pivot.add(blade);pivot.rotation.z=i*Math.PI/2;sails.add(pivot);}
  banner(forest,-1.5,6,'#b284a0');banner(forest,1.5,6,'#cebd72');
